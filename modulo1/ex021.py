@@ -2,6 +2,6 @@
 
 import pygame
 pygame.mixer.init()
-pygame.mixer.music.load('johnnycash-hurt.mp3')
+pygame.mixer.music.load('../johnnycash-hurt.mp3') # Coloque um arquivo mp3 na pasta para funcionar
 pygame.mixer.music.play()
 input()

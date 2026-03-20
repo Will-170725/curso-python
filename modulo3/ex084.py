@@ -8,10 +8,6 @@ dados = list()
 continuar = 'S'
 pesados = list()
 leves = list()
-maior = 0
-menor = 0
-flagp = 0
-flagl = 0
 while continuar == 'S':
     nome = str(input('Nome: '))
     peso = float(input('Peso: '))
@@ -23,23 +19,17 @@ while continuar == 'S':
     while continuar != 'S' and continuar != 'N':
         continuar = str(input('Digite "S" para continuar ou "N" para encerrar: ')).strip().upper()
 print(f'No total, foram cadastradas {len(galera)} pessoas')
+maior = galera[0][1]
+menor = galera[0][1]
 for posicao, dado in enumerate(galera):
-    dado[1] = maior
-    dado[1] = menor
-    if dado[1] >= maior:
+    if dado[1] > maior:
+        maior = dado[1]
+    if dado[1] < menor:
+        menor = dado[1]
+for posicao, dado in enumerate(galera):
+    if dado[1] == maior:
         pesados.append(dado[0])
-        pesados.append(dado[1])
-        flagp += 1
-    if dado[1] <= menor:
+    if dado[1] == menor:
         leves.append(dado[0])
-        leves.append(dado[1])
-        flagl += 1
-    for pessoa in pesados:
-        if dado[1] > pessoa[1] and flagp > 1:
-            pesados.pop()
-            pesados.append(dado[1])
-            pesados.append(dado[0])
-
-print(f'O maior peso foi de {max(pesados)}Kg. Peso de {pesados}')
-#print(f'O menor peso foi de {min(menor)}Kg. Peso de {leves}')
-
+print(f'O maior peso foi de {maior}Kg. Peso de {pesados}')
+print(f'O menor peso foi de {menor}Kg. Peso de {leves}')
